@@ -27,6 +27,8 @@ public class PostListActivity extends AppCompatActivity {
     private static List<Post> posts = new ArrayList<>();
     private WebApiService webApiService;
     private RecyclerView recyclerView;
+    public static int userIdTarget;
+    public static int postIdTarget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class PostListActivity extends AppCompatActivity {
         webApiService = WebApiAdapter.getWebApiService();
         Intent intent = getIntent();
         int userId = intent.getIntExtra("userId",0);
-
+        userIdTarget = userId;
         webApiService.getPosts(userId).enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {

@@ -13,4 +13,7 @@ public interface WebApiService {
     Call<List<User>> getUsers();
     @GET("posts")
     Call<List<Post>> getPosts(@Query("userId") int userId);
+
+    @GET("posts")
+    Call<Post> getPost(@Query(("userId")) int userId,@Query("id") int postId);
 }

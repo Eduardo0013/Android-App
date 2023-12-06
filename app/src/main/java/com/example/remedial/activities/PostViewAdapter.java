@@ -1,5 +1,6 @@
 package com.example.remedial.activities;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,11 @@ public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.ViewHo
         public void bind(Post post){
             TextView title = view.findViewById(R.id.titlePost);
             title.setText(post.getTitle());
+            view.setOnClickListener((view) -> {
+                Intent intent = new Intent(view.getContext(), PostDetailsActivity.class);
+                PostListActivity.postIdTarget = post.getId();
+                view.getContext().startActivity(intent);
+            });
         }
     }
 }
